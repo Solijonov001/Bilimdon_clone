@@ -1,4 +1,4 @@
-from sqlalchemy.orm import  DeclarativeBase
+from sqlalchemy.orm import  DeclarativeBase,sessionmaker
 from sqlalchemy import create_engine
 
 from dotenv import load_dotenv
@@ -18,3 +18,8 @@ class Base(DeclarativeBase):
 
 
 DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+engine = create_engine(DATABASE_URL)
+
+
+SessionLocal = sessionmaker(bind=engine)
